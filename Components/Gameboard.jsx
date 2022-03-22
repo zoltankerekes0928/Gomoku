@@ -8,6 +8,7 @@ const Gameboard = () => {
 
   const [board, setBoard] = useState(initialBoard())
   const [symbol, setSymbol] = useState("X")
+  const [winner , setWinner] = useState(null)
 
   function initialBoard(){
     const board = []
@@ -42,7 +43,7 @@ const Gameboard = () => {
     for(let row of board){
       const winner =  getWinner(row)  
       if(winner !== undefined){
-        alert(`${winner} win`)
+        setWinner(winner)
       } 
     }
     // vertical
@@ -51,7 +52,7 @@ const Gameboard = () => {
      for(let row of trasposedArray){
       const winner =  getWinner(row)  
       if(winner !== undefined){
-        alert(`${winner} win`)
+        setWinner(winner)
       } 
     }
     // main and cross diagonal
@@ -59,7 +60,7 @@ const Gameboard = () => {
        for(let row of diagonal){
          const winner = getWinner(row) 
           if(winner !== undefined){
-          alert(`${winner} win`)
+          setWinner(winner)
       } 
     }
   }
@@ -108,6 +109,7 @@ const Gameboard = () => {
   return (
     <>
     <button className='btn' onClick={()=>setBoard(initialBoard())}>New Game</button>
+    <h2>A Győztes : {winner}</h2>
       <table className='table-body'>
         <tbody className='table-body'>
           {board.map((rows, rowIndex)=>{
