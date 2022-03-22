@@ -1,0 +1,30 @@
+.table-row {
+  border: 1px solid black;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  cursor: pointer;
+}
+.table-body {
+  border-collapse: collapse;
+}
+
+.notAllowed {
+  border: 1px solid black;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  cursor: not-allowed;
+}
+
+.table-row:hover {
+  background-color: rgb(207, 202, 202);
+}
+
+.btn {
+  padding: 5px 10px;
+  margin-bottom: 5vh;
+  background-color: rgb(148, 148, 226);
+  border-radius: 10px;
+  color: azure;
+}
