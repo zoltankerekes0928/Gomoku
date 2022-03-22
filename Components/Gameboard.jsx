@@ -21,15 +21,13 @@ const Gameboard = () => {
       return board
   }
 
-
-
   const handleClick = (e)=>{
-   
+ 
     const {row, col} = e.target.dataset
     const newBoard = JSON.parse(JSON.stringify(board))
     if(newBoard[row][col] === null){
     newBoard[row][col]= symbol  
-    checkWinner()
+    checkWinner(newBoard)
     setSymbol((symbol)=>symbol === "X" ? setSymbol("O"):setSymbol("X"))  
     setBoard(newBoard)
     
@@ -39,7 +37,7 @@ const Gameboard = () => {
     }
   }
 
-  const checkWinner=()=>{
+  const checkWinner=(board)=>{
     // horizontal
     for(let row of board){
       const winner =  getWinner(row)  
@@ -57,7 +55,7 @@ const Gameboard = () => {
       } 
     }
     // main and cross diagonal
-       const diagonal = getWinnerInDiagonal()
+       const diagonal = getWinnerInDiagonal(board)
        for(let row of diagonal){
          const winner = getWinner(row) 
           if(winner !== undefined){
@@ -67,7 +65,7 @@ const Gameboard = () => {
   }
 
   function getWinner(row){
-    let counter = 1
+    let counter = 0
     for(let cel of row){
       if(cel === symbol){
         counter ++
@@ -75,7 +73,7 @@ const Gameboard = () => {
         return symbol
       }
       }else{
-        counter = 1
+        counter = 0
       }
     }  
   }
@@ -83,7 +81,7 @@ const Gameboard = () => {
 
   // main and cross diagonal
 
- function getWinnerInDiagonal(){
+ function getWinnerInDiagonal(board){
 
   let diagonalSum = []
   let board1 = [...board]

@@ -3,7 +3,7 @@ import Gameboard from "./Components/Gameboard.jsx"
 function App() {
   return (
     <div className="App">
-     <h1>Gomuku Game</h1>
+     <h1>Gomoku Game</h1>
       <Gameboard/>
     </div>
   );
